@@ -18,6 +18,13 @@ class Artist
       @id = SqlRunner.run(sql, values)[0]["id"].to_i()
     end
 
+    def delete()
+      sql = "DELETE FROM artists where id = $1"
+      values = [@id]
+      SqlRunner.run(sql, values)
+    end
+
+
     def self.find(id)
         sql = "SELECT * FROM artists WHERE id = $1"
         values = [id]
